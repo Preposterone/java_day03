@@ -1,4 +1,3 @@
-
 public class Printer {
 	private int ink = 1;
 
@@ -8,8 +7,8 @@ public class Printer {
 				wait();
 			}
 			ink = 0;
-		}	else	{
-			while (ink == 1)	{
+		} else {
+			while (ink == 1) {
 				wait();
 			}
 			ink = 1;

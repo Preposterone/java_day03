@@ -1,4 +1,3 @@
-
 public class MyThread extends Thread {
 
 	private final String creature;
@@ -15,7 +14,9 @@ public class MyThread extends Thread {
 	public void run() {
 		for (int i = 0; i < this.count; i++) {
 			try {
-				Thread.sleep(sleepFor);
+				if (sleepFor > 0) {
+					Thread.sleep(sleepFor);
+				}
 			} catch (InterruptedException e) {
 				System.exit(-1);
 			}

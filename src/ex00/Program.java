@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class Program {
@@ -20,23 +19,25 @@ public class Program {
 		eggPrinter.start();
 
 		for (int i = 0; i < count; i++) {
-			Thread.sleep(sleepFor);
+			if (sleepFor > 0) {
+				Thread.sleep(sleepFor);
+			}
 			System.out.println(HUMAN);
 		}
 	}
 
-	private static void getCountFromArgs(String [] args)	{
+	private static void getCountFromArgs(String[] args) {
 		Scanner parseArgs = new Scanner(args[0]).useDelimiter("=");
 
-		if (parseArgs.next().equals("--count"))	{
+		if (parseArgs.next().equals("--count")) {
 			if (parseArgs.hasNextInt()) {
 				count = parseArgs.nextInt();
-			}	else 	{
+			} else {
 				System.out.println("Invalid argument specified, setting count to default (10)");
 			}
 		}
 		parseArgs.close();
-		if (args.length > 1)	{
+		if (args.length > 1) {
 			parseArgs = new Scanner(args[1]);
 			if (parseArgs.hasNextInt()) {
 				sleepFor = parseArgs.nextInt();

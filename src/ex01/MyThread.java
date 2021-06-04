@@ -1,10 +1,9 @@
-
 public class MyThread extends Thread {
 
+	private final static Printer printer = new Printer();
 	private final String creature;
 	private final int count;
 	private final Type type;
-	private final static Printer printer = new Printer();
 
 	public MyThread(String creature, int count, Type type) {
 		this.creature = creature;

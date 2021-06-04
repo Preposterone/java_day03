@@ -1,8 +1,6 @@
-
 import java.util.Scanner;
 
-enum Type
-{
+enum Type {
 	CONSUMER,
 	PRODUCER
 }
@@ -25,13 +23,13 @@ public class Program {
 		eggPrinter.start();
 	}
 
-	private static void getCountFromArgs(String [] args)	{
+	private static void getCountFromArgs(String[] args) {
 		Scanner parseArgs = new Scanner(args[0]).useDelimiter("=");
 
-		if (parseArgs.next().equals("--count"))	{
+		if (parseArgs.next().equals("--count")) {
 			if (parseArgs.hasNextInt()) {
 				count = parseArgs.nextInt();
-			}	else 	{
+			} else {
 				System.out.println("Invalid argument specified, setting count to default (10)");
 			}
 		}
