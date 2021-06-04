@@ -19,7 +19,7 @@ public class Program {
 
 		System.out.println("Sum: " + sumList.stream().flatMapToInt(IntStream::of).sum());
 
-		int splitBy = arraySize / threadsCount;
+		int splitBy = (threadsCount > 0 ? arraySize / threadsCount : 1);
 
 		int[] resultArr = new int[threadsCount];
 		for (int i = 0, j = 0; i < threadsCount; i++) {
@@ -45,8 +45,12 @@ public class Program {
 		if (parseArgs.next().equals("--arraySize")) {
 			if (parseArgs.hasNextInt()) {
 				arraySize = parseArgs.nextInt();
+				if (arraySize < 0)	{
+					System.err.println("Invalid argument specified, setting arraySize to default (13)");
+					arraySize = 13;
+				}
 			} else {
-				System.out.println("Invalid argument specified, setting arraySize to default (13)");
+				System.err.println("Invalid argument specified, setting arraySize to default (13)");
 			}
 		}
 		parseArgs.close();
@@ -55,8 +59,12 @@ public class Program {
 			if (parseArgs.next().equals("--threadsCount")) {
 				if (parseArgs.hasNextInt()) {
 					threadsCount = parseArgs.nextInt();
+					if (threadsCount < 0)	{
+						System.err.println("Invalid argument specified, setting threadsCount to default (3)");
+						threadsCount = 3;
+					}
 				} else {
-					System.out.println("Invalid argument specified, setting threadsCount to default (3)");
+					System.err.println("Invalid argument specified, setting threadsCount to default (3)");
 				}
 			}
 		}
