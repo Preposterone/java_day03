@@ -18,6 +18,9 @@ public class Program {
 		henPrinter.start();
 		eggPrinter.start();
 
+		henPrinter.join();
+		eggPrinter.join();
+
 		for (int i = 0; i < count; i++) {
 			if (sleepFor > 0) {
 				Thread.sleep(sleepFor);
